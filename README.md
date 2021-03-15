@@ -2,7 +2,7 @@
 
 Projet de BOT Discord qui a pour but d'envoyer un screen de l'edt de la personne faisant partie de l'EPSI
 
-# Utilisation
+# Attention
 
 Si vous utilisez un autre navigateur que chrome, renseignez vous sur le webdriver à utiliser en fonction de votre navigateur
 
