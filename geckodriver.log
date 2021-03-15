@@ -1,0 +1,30 @@
+1615823935403	geckodriver	INFO	Listening on 127.0.0.1:35735
+1615823935408	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile9FL4gR"
+Error: no DISPLAY environment variable specified
+1615823962704	geckodriver	INFO	Listening on 127.0.0.1:49359
+1615823962709	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile0EMouD"
+Error: no DISPLAY environment variable specified
+1615824075563	geckodriver	INFO	Listening on 127.0.0.1:34007
+1615824076571	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileg3n4df"
+Running Firefox as root in a regular user's session is not supported.  ($XAUTHORITY is /run/user/1000/gdm/Xauthority which is owned by baptiste.)
+1615824370816	geckodriver	INFO	Listening on 127.0.0.1:39531
+1615824370821	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileaNi7ar"
+Running Firefox as root in a regular user's session is not supported.  ($XAUTHORITY is /run/user/1000/gdm/Xauthority which is owned by baptiste.)
+1615824476865	geckodriver	INFO	Listening on 127.0.0.1:42167
+1615824476871	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilefhuRzJ"
+Running Firefox as root in a regular user's session is not supported.  ($XAUTHORITY is /run/user/1000/gdm/Xauthority which is owned by baptiste.)
+1615824736467	geckodriver	INFO	Listening on 127.0.0.1:43499
+1615824736472	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileeCXT5l"
+Running Firefox as root in a regular user's session is not supported.  ($XAUTHORITY is /run/user/1000/gdm/Xauthority which is owned by baptiste.)
+1615824912599	geckodriver	INFO	Listening on 127.0.0.1:46583
+1615824912604	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileUlO9aQ"
+Running Firefox as root in a regular user's session is not supported.  ($XAUTHORITY is /run/user/1000/gdm/Xauthority which is owned by baptiste.)
+1615824953894	geckodriver	INFO	Listening on 127.0.0.1:44949
+1615824953898	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileGzeex8"
+Running Firefox as root in a regular user's session is not supported.  ($XAUTHORITY is /run/user/1000/gdm/Xauthority which is owned by baptiste.)
+1615825334700	geckodriver	INFO	Listening on 127.0.0.1:45759
+1615825334705	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile5kSuwi"
+Running Firefox as root in a regular user's session is not supported.  ($XAUTHORITY is /run/user/1000/gdm/Xauthority which is owned by baptiste.)
+1615825348216	geckodriver	INFO	Listening on 127.0.0.1:47753
+1615825348221	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile77fQu7"
+Running Firefox as root in a regular user's session is not supported.  ($XAUTHORITY is /run/user/1000/gdm/Xauthority which is owned by baptiste.)

@@ -3,9 +3,10 @@ from discord.ext import commands
 from datetime import date
 from selenium import webdriver
 from time import sleep
+from pyvirtualdisplay import Display
 
 
-TOKEN = 'TOKEN DISCORD'
+TOKEN = 'TOKEN'
 
 bot = commands.Bot(command_prefix='!')
 today = date.today()
@@ -32,7 +33,12 @@ async def edt(ctx, *msg):
         await ctx.send(file=discord.File('test.png'))
 
 def takeScreen(url):
-    driver = webdriver.Chrome("chemin chromedriver")
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--window-size=1420,1080')
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--disable-gpu')
+    driver = webdriver.Chrome("chromedriver", chrome_options=chrome_options )
     driver.get(url)
     sleep(1)
     driver.get_screenshot_as_file("test.png")
