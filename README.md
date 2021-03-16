@@ -1,7 +1,8 @@
-# ProjetBotEdtEpsi
+# Projet Bot Edt Epsi
 
-Projet de BOT Discord qui a pour but d'envoyer un screen de l'edt de la personne faisant partie de l'EPSI
+Projet de BOT Discord qui a pour but d'envoyer un screen de l'edt de la personne faisant partie de l'EPSI.
 
+Ce bot est testé et optimisé pour les OS : MACOSX et UBUNTU 20.04
 
 ## Utilisation et installation
 
