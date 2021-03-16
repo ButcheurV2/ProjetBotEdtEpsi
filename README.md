@@ -1,4 +1,4 @@
-<h1 align="center"> Projet Bot Edt Epsi 👋 </h1>
+<h1 align="center"> Projet Bot Discord Edt Epsi 👋 </h1>
 
 # Information
 
