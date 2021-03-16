@@ -4,6 +4,8 @@
 
 Ce bot est testé et optimisé pour les OS : MACOSX et UBUNTU 20.04
 
+Si vous voulez de l'aide pour la mise en place ou quoi que ce soit d'autre n'hésitez pas je prendrai plaisir à vous répondre !
+
 ### 🏠 [Homepage](https://github.com/ButcheurV2)
 
 ## Auteur
@@ -12,6 +14,7 @@ Ce bot est testé et optimisé pour les OS : MACOSX et UBUNTU 20.04
 
 * Github: [@ButcheurV2](https://github.com/ButcheurV2)
 * Twitter: [@baptzzz](https://twitter.com/baptzzz)
+* Discord: Baptzzz#7023
 
 
 ## Utilisation et installation
