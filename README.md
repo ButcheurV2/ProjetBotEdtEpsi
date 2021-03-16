@@ -1,8 +1,18 @@
 <h1 align="center"> Projet Bot Edt Epsi 👋 </h1>
 
-Projet de BOT Discord qui a pour but d'envoyer un screen de l'edt de la personne faisant partie de l'EPSI.
+# Information
 
 Ce bot est testé et optimisé pour les OS : MACOSX et UBUNTU 20.04
+
+### 🏠 [Homepage](https://github.com/ButcheurV2)
+
+## Auteur
+
+👤 **baptzzz**
+
+* Github: [@ButcheurV2](https://github.com/ButcheurV2)
+* Twitter: [@baptzzz](https://twitter.com/baptzzz)
+
 
 ## Utilisation et installation
 
