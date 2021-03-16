@@ -2,19 +2,35 @@
 
 Projet de BOT Discord qui a pour but d'envoyer un screen de l'edt de la personne faisant partie de l'EPSI
 
-# Attention
 
-Si vous utilisez un autre navigateur que chrome, renseignez vous sur le webdriver à utiliser en fonction de votre navigateur
+## Utilisation et installation
 
-# Utilisation
+Pour installer ce bot localement ou sur un serveur : 
 
-Commande du bot : !edt prenom.nom
+``` git clone https://github.com/ButcheurV2/ProjetBotEdtEpsi.git
+```
 
-# Optimisation
+Vérifiez bien après avoir clone le projet que vous ayez bien ajouté votre TOKEN disponible sur https://discord.com/developers/applications 
+
+Si vous utilisez un autre navigateur que chrome, renseignez vous sur le webdriver à utiliser en fonction de votre navigateur. 
+
+Par exemple, ce sera geckodriver sur FireFox
+
+Veuillez bien vérifier que tous les packages de "allupdates.sh" sont bien installés 
+
+Commande pour lancer le programme en "arrière plan" (vous pouvez fermer le terminal et faire autre chose, utilse sur un serveur) : 
+
+``` nohup python3 bot.py
+```
+
+Résumé des commandes du bot : !aide
+
+
+## Optimisation
 
 Pour l'instant il reste beaucoup d'optimisation à faire
 
-# Avoir le bot sur son serveur ! 
+## Avoir le bot sur son serveur ! 
 
 Si vous voulez avoir le bot sur votre serveur et qu'il soit up 24/24 grâce à mon hébergement n'hésitez pas à me demander sur discord : Baptzzz#7023
 
