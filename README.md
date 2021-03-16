@@ -32,7 +32,7 @@ Résumé des commandes du bot : !aide
 
 Pour l'instant il reste beaucoup d'optimisation à faire
 
-## Avoir le bot sur son serveur ! 
+## Avoir le bot sur son serveur Discord ! 
 
 Si vous voulez avoir le bot sur votre serveur et qu'il soit up 24/24 grâce à mon hébergement n'hésitez pas à me demander sur discord : Baptzzz#7023
 
