@@ -3,10 +3,9 @@ from discord.ext import commands
 from datetime import date
 from selenium import webdriver
 from time import sleep
-from pyvirtualdisplay import Display
 
 
-TOKEN = 'TOKEN'
+TOKEN = 'ODIwMjg3NzkxNDAxMjcxMzQ2.YEy-iQ.5OtfsuQB1v3ZybVsoohvb0i6pUM'
 
 bot = commands.Bot(command_prefix='!')
 today = date.today()
