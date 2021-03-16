@@ -5,7 +5,7 @@ from selenium import webdriver
 from time import sleep
 
 
-TOKEN = 'ODIwMjg3NzkxNDAxMjcxMzQ2.YEy-iQ.BhP2jUQ3Smm3OuZGa3n_mRt_fUc'
+TOKEN = 'TOKEN DU BOT DISCORD'
 
 bot = commands.Bot(command_prefix='!')
 today = date.today()

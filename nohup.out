@@ -25,3 +25,7 @@ Traceback (most recent call last):
   File "/usr/local/lib/python3.8/dist-packages/discord/gateway.py", line 587, in poll_event
     raise ConnectionClosed(self.socket, shard_id=self.shard_id, code=code) from None
 discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 4004
+projet.py:40: DeprecationWarning: use options instead of chrome_options
+  driver = webdriver.Chrome("chromedriver", chrome_options=chrome_options )
+Bot is ready
+end...
