@@ -7,7 +7,8 @@ Projet de BOT Discord qui a pour but d'envoyer un screen de l'edt de la personne
 
 Pour installer ce bot localement ou sur un serveur : 
 
-``` git clone https://github.com/ButcheurV2/ProjetBotEdtEpsi.git
+```
+git clone https://github.com/ButcheurV2/ProjetBotEdtEpsi.git
 ```
 
 Vérifiez bien après avoir clone le projet que vous ayez bien ajouté votre TOKEN disponible sur https://discord.com/developers/applications 
@@ -20,7 +21,8 @@ Veuillez bien vérifier que tous les packages de "allupdates.sh" sont bien insta
 
 Commande pour lancer le programme en "arrière plan" (vous pouvez fermer le terminal et faire autre chose, utilse sur un serveur) : 
 
-``` nohup python3 bot.py
+```
+nohup python3 bot.py
 ```
 
 Résumé des commandes du bot : !aide
