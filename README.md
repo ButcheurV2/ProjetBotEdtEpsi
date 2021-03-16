@@ -1,4 +1,4 @@
-# Projet Bot Edt Epsi
+<h1 align="center"> Projet Bot Edt Epsi 👋 </h1>
 
 Projet de BOT Discord qui a pour but d'envoyer un screen de l'edt de la personne faisant partie de l'EPSI.
 
