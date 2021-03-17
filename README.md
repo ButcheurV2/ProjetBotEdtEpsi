@@ -33,6 +33,8 @@ git clone https://github.com/ButcheurV2/ProjetBotEdtEpsi.git
 
 Vérifiez bien après avoir clone le projet que vous ayez bien ajouté votre TOKEN disponible sur https://discord.com/developers/applications 
 
+Si vous hébergez le bot en local, remplacez ```python TOKEN = os.getenv('TOKEN')``` par le TOKEN en clair, mais faites attention si vous souhaitez upload la solution.
+
 Si vous utilisez un autre navigateur que chrome, renseignez vous sur le webdriver à utiliser en fonction de votre navigateur. 
 
 Par exemple, ce sera geckodriver sur FireFox
