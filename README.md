@@ -31,6 +31,12 @@ Si vous utilisez un autre navigateur que chrome, renseignez vous sur le webdrive
 
 Par exemple, ce sera geckodriver sur FireFox
 
+Utilisez la commande suivante pour installer les packages : 
+
+```shell
+bash allupdates.sh
+```
+
 Veuillez bien vérifier que tous les packages de "allupdates.sh" sont bien installés 
 
 Commande pour lancer le programme en "arrière plan" (vous pouvez fermer le terminal et faire autre chose, utilse sur un serveur) : 
