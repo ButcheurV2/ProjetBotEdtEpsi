@@ -1,11 +1,15 @@
 import discord
 from discord.ext import commands
 from datetime import date
+import datetime
+from datetime import datetime
 from selenium import webdriver
 from time import sleep
+import os
 
+TOKEN = os.getenv('TOKEN')
 
-TOKEN = 'ODIwMjg3NzkxNDAxMjcxMzQ2.YEy-iQ.BhP2jUQ3Smm3OuZGa3n_mRt_fUc'
+print(TOKEN)
 
 bot = commands.Bot(command_prefix='!')
 today = date.today()
@@ -21,7 +25,7 @@ async def on_ready():
 async def aide(ctx):
   await ctx.send("Synthaxe de la commande : !edt prenom.nom" + "\n"
                  + "Pour voir l'edt pour une date précise, utilisez : !edt prenom.nom mois/jour/année" +
-                 "\n" + "Exemple, !edt jean.valjean 04/25/2021 (25 avril 2021)")
+                 "\n" + "Exemple, !edt jean.valjean 25/04/2021 (25 avril 2021)")
 
 
 @bot.command()
@@ -37,7 +41,12 @@ async def edt(ctx, msg=None, dateEdt=None):
         await ctx.send(urlObtenu)
         await ctx.send(file=discord.File('test.png'))
     else:
-        urlObtenu = "https://edtmobiliteng.wigorservices.net//WebPsDyn.aspx?action=posEDTBEECOME&serverid=C&Tel=" + msg + "&date=" + dateEdt
+        try:
+            date_obj = datetime.strptime(dateEdt, '%d/%m/%Y').date()
+            date_obj_fin = date_obj.strftime("%m/%d/%Y")
+        except ValueError:
+            await ctx.send("Erreur format de la date, essaye 10/05/2021 par exemple.")
+        urlObtenu = "https://edtmobiliteng.wigorservices.net//WebPsDyn.aspx?action=posEDTBEECOME&serverid=C&Tel=" + msg + "&date=" + str(date_obj_fin)
         takeScreen(urlObtenu)
         await ctx.send(urlObtenu)
         await ctx.send(file=discord.File('test.png'))
@@ -52,6 +61,6 @@ def takeScreen(url):
     sleep(1)
     driver.get_screenshot_as_file("test.png")
     driver.quit()
-    print("end...")
+    print("Fichier envoyé")
 bot.run(TOKEN)
 

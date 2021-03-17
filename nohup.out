@@ -29,3 +29,5 @@ projet.py:40: DeprecationWarning: use options instead of chrome_options
   driver = webdriver.Chrome("chromedriver", chrome_options=chrome_options )
 Bot is ready
 end...
+ODIwMjg3NzkxNDAxMjcxMzQ2.YEy-iQ.BJJEt_Mcf7-L9hFmBByTluwKgoY
+Bot prêt !
