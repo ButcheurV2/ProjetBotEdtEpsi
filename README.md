@@ -1,12 +1,18 @@
 <h1 align="center"> Projet Bot Discord Edt Epsi 👋 </h1>
 
+## Avoir le bot sur son serveur Discord sans l'installer sur une machine ! 
+
+Si vous voulez avoir le bot sur votre serveur et qu'il soit up 24/24 grâce à mon hébergement n'hésitez pas à me demander sur discord : Baptzzz#7023
+
+
+
 # Information
 
 Ce bot est testé et optimisé pour les OS : MACOSX et UBUNTU 20.04
 
 Si vous voulez de l'aide pour la mise en place ou quoi que ce soit d'autre n'hésitez pas je prendrai plaisir à vous répondre !
 
-### 🏠 [Homepage](https://github.com/ButcheurV2)
+### 🏠 [Github](https://github.com/ButcheurV2)
 
 ## Auteur
 
@@ -51,8 +57,4 @@ Résumé des commandes du bot : !aide
 ## Optimisation
 
 Pour l'instant il reste beaucoup d'optimisation à faire
-
-## Avoir le bot sur son serveur Discord ! 
-
-Si vous voulez avoir le bot sur votre serveur et qu'il soit up 24/24 grâce à mon hébergement n'hésitez pas à me demander sur discord : Baptzzz#7023
 
