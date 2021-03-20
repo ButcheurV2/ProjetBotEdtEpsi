@@ -22,13 +22,13 @@ async def on_ready():
   print("Bot prêt !")
   activity = discord.Game(name="Utilise !aide")
   await client.change_presence(status=discord.Status.dnd, activity=activity)
-  channel = client.get_channel(idchannel)
+  channel = client.get_channel(822221243276984371)
   print(channel)
 
 @client.command()
 async def aide(ctx):
   await ctx.send("Synthaxe de la commande : !edt prenom.nom" + "\n"
-                 + "Pour voir l'edt pour une date précise, utilisez : !edt prenom.nom mois/jour/année" +
+                 + "Pour voir l'edt pour une date précise, utilisez : !edt prenom.nom jour/mois/année" +
                  "\n" + "Exemple, !edt jean.valjean 25/04/2021 (25 avril 2021)")
 
 @client.command()
@@ -97,8 +97,8 @@ def lienTeams(url):
 async def mytask(msg):
      now = datetime.now()
      print(now.hour)
-     if(now.hour == 21 or now.hour == 7 or now.hour == 9 or now.hour == 12 or now.hour == 14):
-         channel = client.get_channel(IDCHANNEL)
+     if(now.hour == 7 or now.hour == 9 or now.hour == 12 or now.hour == 14):
+         channel = client.get_channel(822221243276984371)
          lienTeams("https://edtmobiliteng.wigorservices.net//WebPsDyn.aspx?action=posEDTBEECOME&serverid=C&Tel="+msg+"&date={date}".format(date=today.strftime("%m/%d/%Y")))
          await channel.send("Lien de la conv Teams actuel : " + lienConvoTeams)
      else:
