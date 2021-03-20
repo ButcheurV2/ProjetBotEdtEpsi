@@ -10,27 +10,28 @@ import os
 import requests
 from bs4 import BeautifulSoup
 
+#Obtention du token discord que l'on a set dans notre environement
 TOKEN = os.getenv('TOKEN')
-print(TOKEN)
+#Variable global du lien Teams
 global lienConvoTeams
-
+#On récupère la date
 today = date.today()
+#On initialise le préfixe de commande du bot
 client = commands.Bot(command_prefix = '!')
-
+#Fonction quand le bot se lance
 @client.event
 async def on_ready():
   print("Bot prêt !")
   activity = discord.Game(name="Utilise !aide")
   await client.change_presence(status=discord.Status.dnd, activity=activity)
-  channel = client.get_channel(822221243276984371)
-  print(channel)
-
+  channel = client.get_channel(822221243276984371) #On connecte le bot grâce à l'id du channel
+#Commande aide
 @client.command()
 async def aide(ctx):
   await ctx.send("Synthaxe de la commande : !edt prenom.nom" + "\n"
                  + "Pour voir l'edt pour une date précise, utilisez : !edt prenom.nom jour/mois/année" +
                  "\n" + "Exemple, !edt jean.valjean 25/04/2021 (25 avril 2021)")
-
+#Commande lien
 @client.command()
 async def lien(ctx, msg=None):
     if msg is None:
@@ -38,9 +39,9 @@ async def lien(ctx, msg=None):
     if "." not in msg:
         await ctx.send("Login incorrect, exemple de login : jean.valjean")
     else:
-        mytask.start(msg)
+        mytask.start(msg) #On lance la tâche automatisée
 
-
+#Commande edt
 @client.command()
 async def edt(ctx, msg=None, dateEdt=None):
     global lienConvoTeams
@@ -67,6 +68,7 @@ async def edt(ctx, msg=None, dateEdt=None):
         urlObtenu = "https://edtmobiliteng.wigorservices.net//WebPsDyn.aspx?action=posEDTBEECOME&serverid=C&Tel=" + msg + "&date=" + str(date_obj_fin)
         takeScreen(urlObtenu)
         await ctx.send(file=discord.File('test.png'))
+#Fonction qui permet de prendre un screen de la page de l'edt
 def takeScreen(url):
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument('--no-sandbox')
@@ -79,6 +81,7 @@ def takeScreen(url):
     driver.get_screenshot_as_file("test.png")
     driver.quit()
     print("Fichier envoyé")
+#Fonction qui renvoie le lien teams du cours actuel
 def lienTeams(url):
     global lienConvoTeams
     print(url)
@@ -93,6 +96,7 @@ def lienTeams(url):
         lien += 1
     print(tabLien)
     lienConvoTeams = tabLien[0]
+#Tâche qui se lance toute les heures pour donner le lien teams du cours actuel
 @tasks.loop(seconds=3600)
 async def mytask(msg):
      now = datetime.now()
