@@ -9,7 +9,8 @@ from time import sleep
 import os
 import requests
 from bs4 import BeautifulSoup
-
+import urllib.parse
+from urllib.parse import urlparse
 #Obtention du token discord que l'on a set dans notre environement
 TOKEN = os.getenv('TOKEN')
 #Variable global du lien Teams
@@ -54,8 +55,7 @@ async def edt(ctx, msg=None, dateEdt=None):
             date=today.strftime("%m/%d/%Y"))
         takeScreen(urlObtenu)
         await ctx.send(file=discord.File('test.png'))
-        await ctx.send("Génération de ton URL Teams. . . . . Veuillez patienter 45 secondes . . . .")
-        sleep(45)
+        await ctx.send("Génération de ton URL Teams. . . . . . . .")
         lienTeams("https://edtmobiliteng.wigorservices.net//WebPsDyn.aspx?action=posEDTBEECOME&serverid=C&Tel=" + msg + "&date={date}".format(
             date=today.strftime("%m/%d/%Y")))
         await ctx.send("Lien Teams de ton cours actuel : " + lienConvoTeams)
@@ -87,15 +87,18 @@ def lienTeams(url):
     print(url)
     r = requests.get(url)
     soup = BeautifulSoup(r.content, "html.parser")
-    lien = 0
-    tabLien = []
-    for i in soup.find_all('a', {'href': True}):
-        if (lien == 0 or lien % 4 == 0):
-            tabLien.clear()
-            tabLien.append(i['href'])
-        lien += 1
-    print(tabLien)
-    lienConvoTeams = tabLien[0]
+    links = soup.findAll('a', href=True)
+    tabLienFinal = []
+    now = datetime.now()
+    dateJ = now.strftime("%m/%d/%Y")
+    for link in links:
+        tabLien = link['href']
+        params = urllib.parse.parse_qs(urllib.parse.urlparse(tabLien).query)
+        if params['date'][-1] == dateJ:
+            tabLienFinal.clear()
+            tabLienFinal.append(link['href'])
+    print(tabLienFinal[0])
+    lienConvoTeams = tabLienFinal[0]
 #Tâche qui se lance toute les heures pour donner le lien teams du cours actuel
 @tasks.loop(seconds=3600)
 async def mytask(msg):
