@@ -89,10 +89,10 @@ def lienTeams(url):
     soup = BeautifulSoup(r.content, "html.parser")
     lien = 0
     tabLien = []
-    for sexe in soup.find_all('a', {'href': True}):
+    for i in soup.find_all('a', {'href': True}):
         if (lien == 0 or lien % 4 == 0):
             tabLien.clear()
-            tabLien.append(sexe['href'])
+            tabLien.append(i['href'])
         lien += 1
     print(tabLien)
     lienConvoTeams = tabLien[0]
