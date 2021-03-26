@@ -11,6 +11,7 @@ import requests
 from bs4 import BeautifulSoup
 import urllib.parse
 from urllib.parse import urlparse
+from datetime import timedelta
 #Obtention du token discord que l'on a set dans notre environement
 TOKEN = os.getenv('TOKEN')
 #Variable global du lien Teams
@@ -55,10 +56,6 @@ async def edt(ctx, msg=None, dateEdt=None):
             date=today.strftime("%m/%d/%Y"))
         takeScreen(urlObtenu)
         await ctx.send(file=discord.File('test.png'))
-        await ctx.send("Génération de ton URL Teams. . . . . . . .")
-        lienTeams("https://edtmobiliteng.wigorservices.net//WebPsDyn.aspx?action=posEDTBEECOME&serverid=C&Tel=" + msg + "&date={date}".format(
-            date=today.strftime("%m/%d/%Y")))
-        await ctx.send("Lien Teams de ton cours actuel : " + lienConvoTeams)
     else:
         try:
             date_obj = datetime.strptime(dateEdt, '%d/%m/%Y').date()
@@ -68,6 +65,21 @@ async def edt(ctx, msg=None, dateEdt=None):
         urlObtenu = "https://edtmobiliteng.wigorservices.net//WebPsDyn.aspx?action=posEDTBEECOME&serverid=C&Tel=" + msg + "&date=" + str(date_obj_fin)
         takeScreen(urlObtenu)
         await ctx.send(file=discord.File('test.png'))
+@client.command()
+async def teams(ctx, msg=None):
+    if msg is None:
+        await ctx.send("Erreur synthaxe : essaye '!teams prenom.nom' ! ")
+    if "." not in msg:
+        await ctx.send("Login incorrect, exemple de login : jean.valjean")
+    else:
+        urlObtenu = "https://edtmobiliteng.wigorservices.net//WebPsDyn.aspx?action=posEDTBEECOME&serverid=C&Tel=" + msg + "&date={date}".format(
+            date=today.strftime("%m/%d/%Y"))
+#        await ctx.send("Génération de ton URL Teams. . . . . . . .")
+        lienTeams(urlObtenu)
+        if lienConvoTeams==" ":
+            await ctx.send("Aucun lien disponible actuellement")
+        else:
+            await ctx.send("Lien teams de ton cours actuel : " + lienConvoTeams)
 #Fonction qui permet de prendre un screen de la page de l'edt
 def takeScreen(url):
     chrome_options = webdriver.ChromeOptions()
@@ -87,28 +99,32 @@ def lienTeams(url):
     print(url)
     r = requests.get(url)
     soup = BeautifulSoup(r.content, "html.parser")
-    links = soup.findAll('a', href=True)
-    tabLienFinal = []
-    now = datetime.now()
-    dateJ = now.strftime("%m/%d/%Y")
-    for link in links:
-        tabLien = link['href']
-        params = urllib.parse.parse_qs(urllib.parse.urlparse(tabLien).query)
-        if params['date'][-1] == dateJ:
-            tabLienFinal.clear()
-            tabLienFinal.append(link['href'])
-    print(tabLienFinal[0])
-    lienConvoTeams = tabLienFinal[0]
+    lien = 0
+    tabLien = []
+    for i in soup.find_all('a', {'href': True}):
+        if (lien == 0 or lien % 4 == 0):
+            tabLien.clear()
+            tabLien.append(i['href'])
+        lien += 1
+    if tabLien is not None:
+        print(tabLien[0])
+        lienConvoTeams = tabLien[0]
+    else:
+        lienConvoTeams = " "
 #Tâche qui se lance toute les heures pour donner le lien teams du cours actuel
 @tasks.loop(seconds=3600)
 async def mytask(msg):
      now = datetime.now()
      print(now.hour)
-     if(now.hour == 7 or now.hour == 9 or now.hour == 12 or now.hour == 14):
-         channel = client.get_channel(822221243276984371)
-         lienTeams("https://edtmobiliteng.wigorservices.net//WebPsDyn.aspx?action=posEDTBEECOME&serverid=C&Tel="+msg+"&date={date}".format(date=today.strftime("%m/%d/%Y")))
-         await channel.send("Lien de la conv Teams actuel : " + lienConvoTeams)
+     jour = now.strftime("%A")
+     if jour == "Sunday" or jour == "Saturday":
+         print("C'est le W-E")
      else:
-        print("yo?")
+         if now.hour == 7 or now.hour == 9 or now.hour == 12 or now.hour == 14:
+             channel = client.get_channel(822221243276984371)
+             lienTeams("https://edtmobiliteng.wigorservices.net//WebPsDyn.aspx?action=posEDTBEECOME&serverid=C&Tel="+msg+"&date={date}".format(date=today.strftime("%m/%d/%Y")))
+             await channel.send("Lien de la conv Teams actuel : " + lienConvoTeams)
+         else:
+             print("Yo")
 client.run(TOKEN)
 
