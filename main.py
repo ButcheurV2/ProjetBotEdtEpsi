@@ -64,6 +64,7 @@ async def edt(ctx, msg=None, dateEdt=None):
             await ctx.send("Erreur format de la date, essaye 10/05/2021 par exemple.")
         urlObtenu = "https://edtmobiliteng.wigorservices.net//WebPsDyn.aspx?action=posEDTBEECOME&serverid=C&Tel=" + msg + "&date=" + str(date_obj_fin)
         takeScreen(urlObtenu)
+        print(urlObtenu)
         await ctx.send(file=discord.File('test.png'))
 @client.command()
 async def teams(ctx, msg=None):
@@ -74,6 +75,7 @@ async def teams(ctx, msg=None):
     else:
         urlObtenu = "https://edtmobiliteng.wigorservices.net//WebPsDyn.aspx?action=posEDTBEECOME&serverid=C&Tel=" + msg + "&date={date}".format(
             date=today.strftime("%m/%d/%Y"))
+        print(urlObtenu)
 #        await ctx.send("Génération de ton URL Teams. . . . . . . .")
         lienTeams(urlObtenu)
         if lienConvoTeams==" ":
@@ -99,16 +101,23 @@ def lienTeams(url):
     print(url)
     r = requests.get(url)
     soup = BeautifulSoup(r.content, "html.parser")
+    links = soup.findAll('a', href=True)
+    tabLienFinal = []
+    now = datetime.now()
+    dateJ = now.strftime("%m/%d/%Y")
+    dateJPlusUn = (datetime.now() + timedelta(days=1)).strftime('%m/%d/%Y')
     lien = 0
-    tabLien = []
-    for i in soup.find_all('a', {'href': True}):
-        if (lien == 0 or lien % 4 == 0):
-            tabLien.clear()
-            tabLien.append(i['href'])
+    for link in links:
         lien += 1
-    if tabLien is not None:
-        print(tabLien[0])
-        lienConvoTeams = tabLien[0]
+        tabLien = link['href']
+        params = urllib.parse.parse_qs(urllib.parse.urlparse(tabLien).query)
+        if now.hour == 6 or now.hour == 8 and params['date'][-1] == dateJ:
+            tabLienFinal.append(link['href'])
+        elif now.hour == 11 or now.hour == 13 and params['date'][-1] == dateJPlusUn:
+            tabLienFinal.append(link['href'])
+    print(tabLienFinal[0])
+    if tabLienFinal is not None:
+        lienConvoTeams = tabLienFinal[0]
     else:
         lienConvoTeams = " "
 #Tâche qui se lance toute les heures pour donner le lien teams du cours actuel
@@ -120,7 +129,7 @@ async def mytask(msg):
      if jour == "Sunday" or jour == "Saturday":
          print("C'est le W-E")
      else:
-         if now.hour == 7 or now.hour == 9 or now.hour == 12 or now.hour == 14:
+         if now.hour == 6 or now.hour == 8 or now.hour == 11 or now.hour == 13:
              channel = client.get_channel(822221243276984371)
              lienTeams("https://edtmobiliteng.wigorservices.net//WebPsDyn.aspx?action=posEDTBEECOME&serverid=C&Tel="+msg+"&date={date}".format(date=today.strftime("%m/%d/%Y")))
              await channel.send("Lien de la conv Teams actuel : " + lienConvoTeams)
