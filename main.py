@@ -1,3 +1,4 @@
+
 import discord
 from discord.ext import commands
 from discord.ext import tasks
@@ -100,24 +101,16 @@ def lienTeams(url):
     global lienConvoTeams
     print(url)
     r = requests.get(url)
+    sleep(2)
     soup = BeautifulSoup(r.content, "html.parser")
-    links = soup.findAll('a', href=True)
-    tabLienFinal = []
-    now = datetime.now()
-    dateJ = now.strftime("%m/%d/%Y")
-    dateJPlusUn = (datetime.now() + timedelta(days=1)).strftime('%m/%d/%Y')
-    lien = 0
-    for link in links:
-        lien += 1
-        tabLien = link['href']
-        params = urllib.parse.parse_qs(urllib.parse.urlparse(tabLien).query)
-        if now.hour == 6 or now.hour == 8 and params['date'][-1] == dateJ:
-            tabLienFinal.append(link['href'])
-        elif now.hour == 11 or now.hour == 13 and params['date'][-1] == dateJPlusUn:
-            tabLienFinal.append(link['href'])
-    print(tabLienFinal[0])
-    if tabLienFinal is not None:
-        lienConvoTeams = tabLienFinal[0]
+    sleep(2)
+    tabLien = []
+    for i in soup.find_all('a', {'href': True}):
+        sleep(0.3)
+        tabLien.append(i['href'])
+    if tabLien is not None:
+        print(tabLien[-4])
+        lienConvoTeams = tabLien[-4]
     else:
         lienConvoTeams = " "
 #Tâche qui se lance toute les heures pour donner le lien teams du cours actuel
